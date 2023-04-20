@@ -1,0 +1,23 @@
+{
+    "name": "shayanys/lara-reserve",
+    "description": "a package to do reservation",
+    "type": "laravel-package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "shayan",
+            "email": "shayan.yousefi100@yahoo.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "laravel/laravel": "^10"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ShayanYS\\LaraReserve\\LaraReserveServiceProvider"
+            ]
+        }
+    }
+}
