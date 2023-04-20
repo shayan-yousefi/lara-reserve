@@ -21,4 +21,6 @@ interface ReservableReserveInterface
     public function reserveWithoutCustomer(array $metadata, DatetimeInterface|Carbon|DateTime $reserveDate, string $reserveTime = '00:00:00'): Reserve;
 
     public function dontCheckAvailability(): static;
+
+    public function shouldCheckAvailability():bool;
 }
