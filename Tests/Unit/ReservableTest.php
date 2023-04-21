@@ -1,10 +1,9 @@
 <?php
 namespace ShayanYS\LaraReserve\Tests\Unit;
 
-use ShayanYS\LaraReserve\Models\Reserve;
-use ShayanYS\LaraReserve\TestModels\CustomerTestModel;
-use ShayanYS\LaraReserve\TestModels\ReservableTestModel;
 use ShayanYS\LaraReserve\Tests\TestCase;
+use ShayanYS\LaraReserve\Tests\TestModels\CustomerTestModel;
+use ShayanYS\LaraReserve\Tests\TestModels\ReservableTestModel;
 
 class ReservableTest extends TestCase
 {
