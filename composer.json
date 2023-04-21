@@ -32,7 +32,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ShayanYS\\LaraReserve\\Tests\\": "Tests/"
+            "ShayanYS\\LaraReserve\\Tests\\": "tests/"
         }
     }
 }
