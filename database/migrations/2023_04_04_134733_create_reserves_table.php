@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('customer_type')->nullable();
             $table->integer('customer_id')->nullable();
             $table->json('metadata')->nullable();
-            $table->dateTime('reserved_date');
+            $table->date('reserved_date');
             $table->time('reserved_date')->default('00:00:00');
             $table->timestamps();
         });
