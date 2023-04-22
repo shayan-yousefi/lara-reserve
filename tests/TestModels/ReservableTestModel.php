@@ -15,6 +15,6 @@ class ReservableTestModel extends Model implements ReservableInterface
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->checkAvailability = false;
+//        $this->checkAvailability = false;
     }
 }
