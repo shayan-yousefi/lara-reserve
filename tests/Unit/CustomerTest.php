@@ -26,7 +26,7 @@ class CustomerTest extends TestCase
 
     public function test_reservable_with_fully_reserved_can_reserve_again(): void
     {
-        $reservable = ReservableTestModel::make(['id' => 1]);
+        $reservable = ReservableTestModel::make(['id' => 1])->withCheckAvailability();
         $customer = CustomerTestModel::make(['id' => 1]);
 
         $reservable->max_allowed_reserves = 5;
@@ -41,7 +41,7 @@ class CustomerTest extends TestCase
         $this->assertFalse($reservable->isAvailable(Carbon::createFromFormat('Y-m-d', '2023-04-22')));
     }
 //
-    public function test_do_not_check_availability_is_working(){
+    public function test_without_check_availability_is_working(){
         $reservable = ReservableTestModel::make(['id' => 1]);
         $customer = CustomerTestModel::make(['id' => 1]);
 
@@ -54,6 +54,24 @@ class CustomerTest extends TestCase
         //this is 6th reserve for this date and time, this should be reserve because use of withoutCheckAvailability
 
         $this->assertInstanceOf(Reserve::class, $reserve);
+        $this->assertFalse($reservable->isAvailable(Carbon::createFromFormat('Y-m-d', '2023-04-22')));
+
+
+    }
+
+    public function test_with_check_availability_is_working(){
+        $reservable = ReservableTestModel::make(['id' => 1]);
+        $customer = CustomerTestModel::make(['id' => 1]);
+
+        $reservable->max_allowed_reserves = 5;
+        for ($i = 0; $i < 5; $i++) {
+            $customer->reserve($reservable->withCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', ['someDetails' => 'details']);
+            // 5 reserves filled in this date and time with this loop
+        }
+        $reserve = $customer->reserve($reservable->withCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', ['someDetails' => 'details']);
+        //this is 6th reserve for this date and time, this should be reserve because use of withoutCheckAvailability
+
+        $this->assertFalse($reserve);
         $this->assertFalse($reservable->isAvailable(Carbon::createFromFormat('Y-m-d', '2023-04-22')));
 
 
