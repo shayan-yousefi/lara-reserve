@@ -21,8 +21,13 @@ trait ReservableReserve
         return $customer->reserve($this, $reserveDate, $reserveTime, $metadata); // reserve without check availability
     }
 
-    public function dontCheckAvailability():static{
+    public function withoutCheckAvailability():static{
         $this->checkAvailability = false;
+        return $this;
+    }
+
+    public function withCheckAvailability():static{
+        $this->checkAvailability = true;
         return $this;
     }
 

@@ -12,11 +12,6 @@ use ShayanYS\LaraReserve\Tests\TestModels\ReservableTestModel;
 
 class CustomerTest extends TestCase
 {
-
-
-    /**
-     * A basic unit test example.
-     */
     public function test_customer_can_reserve_a_reservable(): void
     {
         $reservable = ReservableTestModel::make(['id' => 1]);
@@ -52,11 +47,11 @@ class CustomerTest extends TestCase
 
         $reservable->max_allowed_reserves = 5;
         for ($i = 0; $i < 5; $i++) {
-            $customer->reserve($reservable->dontCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', ['someDetails' => 'details']);
+            $customer->reserve($reservable->withoutCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', ['someDetails' => 'details']);
             // 5 reserves filled in this date and time with this loop
         }
-        $reserve = $customer->reserve($reservable->dontCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', ['someDetails' => 'details']);
-        //this is 6th reserve for this date and time, this should be reserve because use of dontCheckAvailability
+        $reserve = $customer->reserve($reservable->withoutCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', ['someDetails' => 'details']);
+        //this is 6th reserve for this date and time, this should be reserve because use of withoutCheckAvailability
 
         $this->assertInstanceOf(Reserve::class, $reserve);
         $this->assertFalse($reservable->isAvailable(Carbon::createFromFormat('Y-m-d', '2023-04-22')));
