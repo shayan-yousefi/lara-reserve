@@ -10,17 +10,16 @@ use Illuminate\Support\Facades\DB;
 trait GetReserves
 {
 
-    public function activeReserves(): MorphMany{
-
-        if(DB::connection() instanceof SQLiteConnection)
-        {
-            return $this->reserves()->where([[DB::raw('strftime("%Y-%m-%d %H:%M:%S",strftime("%Y-%m-%d",`reserved_date`) || " " || `reserved_time`)'), '>=', now()]])->with(['customer','reservable']);
-        }
-        return $this->reserves()->where([[DB::raw('STR_TO_DATE(concat(`reserved_date` , " " , `reserved_time`),"%Y-%m-%d %H:%i:%s")'), '>=', now()]])->with(['customer','reservable']);
-
+    public function activeReserves(): MorphMany
+    {
+        return $this->reserves()->whereDate('reserved_date', '>', now())->orWhere(function ($query){
+            $query->whereDate('reserved_date', '=', now())->whereTime('reserved_time','>=', now());
+        })->with(['customer', 'reservable']);
     }
-    public function allReserves():  MorphMany{
-        return $this->reserves()->with(['customer','reservable']);
+
+    public function allReserves(): MorphMany
+    {
+        return $this->reserves()->with(['customer', 'reservable']);
     }
 
 }
