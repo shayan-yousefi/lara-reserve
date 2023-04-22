@@ -35,6 +35,7 @@ trait ReservableReserve
 
         if (!$this->max_allowed_reserves) {
             return true;
+
         }
 
         return $this->getReserveCountInOneDateTime($date, $time) < $this->max_allowed_reserves;
@@ -43,7 +44,7 @@ trait ReservableReserve
     private function getReserveCountInOneDateTime(DateTimeInterface|DateTime|Carbon $date, string $time = '00:00:00'): int
     {
         $date = $this->createCarbonDateTime($date);
-        $reservedCountRow = $this->reserves()->select(DB::raw('count(*) as reserves_count'))->where([['reserved_date', $date->toDateString()], ['reserved_time', $time]])->first();
+        $reservedCountRow = $this->reserves()->select(DB::raw('count(*) as reserves_count'))->where( 'reserved_time', $time)->whereDate('reserved_date', $date)->first();
 
         if (!$reservedCountRow) {
             return 0;
