@@ -12,4 +12,9 @@ class ReservableTestModel extends Model implements ReservableInterface
     use HasFactory,Reservable;
     protected $fillable = ['id'];
 
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->checkAvailability = false;
+    }
 }
