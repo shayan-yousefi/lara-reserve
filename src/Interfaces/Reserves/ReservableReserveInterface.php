@@ -22,5 +22,7 @@ interface ReservableReserveInterface
 
     public function withoutCheckAvailability(): static;
 
-    public function shouldCheckAvailability():bool;
+    public function withCheckAvailability(): static;
+
+    public function shouldCheckAvailability(): bool;
 }
