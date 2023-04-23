@@ -1,11 +1,11 @@
 # Lara Reserve
 
-___
+
 Lara Reserve Is a Laravel Package To Adds a Reservation feature to the laravel models.
 
 # Installation
 
-___
+
 To Install Lara Reserve Run Following Command:
 
 ```shell
@@ -265,11 +265,11 @@ $customer->allReserves()->get();
 the `allReserves` method return a MorphMany relation you can call `get` method to get the collection of reserves; you can also call `paginate` method.
 
 # License
-___
+
 Freely distributable under the terms of the MIT license.
 
 # Buy Me a Cofee
-____
+
 <a href="http://www.coffeete.ir/shayanys">
        <img src="http://www.coffeete.ir/images/buttons/lemonchiffon.png" style="width:260px;" />
 </a>
