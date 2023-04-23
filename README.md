@@ -1,4 +1,7 @@
 # Lara Reserve
+![Lara Reserve license](https://img.shields.io/github/license/shayan100/lara-reserve)
+![Lara Reserve size](https://img.shields.io/github/languages/code-size/shayan100/lara-reserve)
+[![Lara Reserve version](https://img.shields.io/packagist/v/shayanys/lara-reserve)](https://packagist.org/packages/shayanys/lara-reserve)
 
 
 Lara Reserve Is a Laravel Package To Adds a Reservation feature to the laravel models.
