@@ -3,9 +3,6 @@
 ![Lara Reserve size](https://img.shields.io/github/languages/code-size/shayan100/lara-reserve)
 [![Lara Reserve version](https://img.shields.io/packagist/v/shayanys/lara-reserve)](https://packagist.org/packages/shayanys/lara-reserve)
 
-
-<div dir="rtl">
-
 پکیج Lara Reserve قابلیت رزرواسیون رو به مدل های لاراول اضافه میکنه.
 
 # نحوه نصب
@@ -271,5 +268,3 @@ $customer->allReserves()->get();
 <br>
 <a href="https://www.buymeacoffee.com/shayanys" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
-
-</div>
