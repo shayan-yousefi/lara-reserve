@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Lara Reserve
 ![Lara Reserve license](https://img.shields.io/github/license/shayan100/lara-reserve)
 ![Lara Reserve size](https://img.shields.io/github/languages/code-size/shayan100/lara-reserve)
@@ -267,4 +268,3 @@ $customer->allReserves()->get();
 </a>
 <br>
 <a href="https://www.buymeacoffee.com/shayanys" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
