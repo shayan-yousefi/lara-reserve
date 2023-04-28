@@ -5,6 +5,8 @@
 
 پکیج Lara Reserve قابلیت رزرواسیون رو به مدل های لاراول اضافه میکنه.
 
+for english document version click [here](faREADME.md)
+
 # نحوه نصب
 
 
