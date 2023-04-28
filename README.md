@@ -274,6 +274,8 @@ Freely distributable under the terms of the MIT license.
 
 # Buy Me a Cofee
 
+A lot of time has been spent to make this package and we always try to keep it updated. If you like, you can show your support in this way and this is valuable for me.
+
 <a href="http://www.coffeete.ir/shayanys">
        <img src="http://www.coffeete.ir/images/buttons/lemonchiffon.png" style="width:260px;" />
 </a>
