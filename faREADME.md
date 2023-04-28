@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Lara Reserve
 ![Lara Reserve license](https://img.shields.io/github/license/shayan100/lara-reserve)
 ![Lara Reserve size](https://img.shields.io/github/languages/code-size/shayan100/lara-reserve)
