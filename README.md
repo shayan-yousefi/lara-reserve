@@ -3,8 +3,9 @@
 ![Lara Reserve size](https://img.shields.io/github/languages/code-size/shayan100/lara-reserve)
 [![Lara Reserve version](https://img.shields.io/packagist/v/shayanys/lara-reserve)](https://packagist.org/packages/shayanys/lara-reserve)
 
-
 Lara Reserve Is a Laravel Package To Adds a Reservation feature to the laravel models.
+
+for persian document version click [here](faREADME.md)
 
 # Installation
 
@@ -162,7 +163,7 @@ $airplaneSeat = AirplainSeat::first();
 
 $airplaneSeat->isAvailable(\Carbon\Carbon::createFromFormat('Y-m-d','2023-05-1'),'17:00:00');
 ```
-This code returns true if `max_allowed_reserves` is less than or equal count of all reserves in 2023-05-1 17:00:00; otherwise returns false.
+This code returns true if `max_allowed_reserves` is less than count of all reserves in 2023-05-1 17:00:00; otherwise returns false.
 
 ## withoutCheckAvailability and withCheckAvailability
 if you don't want to check the availability for some reasons you can use `withoutCheckAvailability` method:
