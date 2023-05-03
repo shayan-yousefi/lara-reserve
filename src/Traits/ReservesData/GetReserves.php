@@ -3,9 +3,7 @@
 namespace ShayanYS\LaraReserve\Traits\ReservesData;
 
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\MySqlConnection;
-use Illuminate\Database\SQLiteConnection;
-use Illuminate\Support\Facades\DB;
+
 
 trait GetReserves
 {
