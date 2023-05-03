@@ -19,8 +19,8 @@ return new class extends Migration
             $table->json('metadata')->nullable();
             $table->date('reserved_date');
             $table->time('reserved_time')->default('00:00:00');
-            $table->date('until_reserved_date')->nullable();
-            $table->time('until_reserved_time')->default('00:00:00');
+            $table->date('end_reserve_date')->nullable();
+            $table->time('end_reserve_time')->default('00:00:00');
             $table->timestamps();
         });
     }
