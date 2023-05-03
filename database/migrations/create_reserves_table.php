@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('reserved_date');
             $table->time('reserved_time')->default('00:00:00');
             $table->date('end_reserve_date')->nullable();
-            $table->time('end_reserve_time')->default('00:00:00');
+            $table->time('end_reserve_time')->nullable();
             $table->timestamps();
         });
     }
