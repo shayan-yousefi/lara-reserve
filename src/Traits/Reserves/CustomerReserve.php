@@ -39,7 +39,7 @@ trait CustomerReserve
 
     private function doReserve(ReservableInterface $reservable, DatetimeInterface|Carbon|DateTime $reserveDate, string $reserveTime = '00:00:00', null|DatetimeInterface|Carbon|DateTime $endReserveDate = null, ?string $endReserveTime = null, ?array $metadata = null): Reserve
     {
-        $reserve = $this->reserves()->make(['reserved_date' => $reserveDate->toDateString(), 'reserved_time' => $reserveTime, 'metadata' => $metadata])->reservable()->associate($reservable); // rserve a reservable for a customer
+        $reserve = $this->reserves()->make(['reserved_date' => $reserveDate->toDateString(), 'reserved_time' => $reserveTime, 'metadata' => $metadata,'until_reserved_date' => $endReserveDate, 'until_reserved_time' => $endReserveTime])->reservable()->associate($reservable); // rserve a reservable for a customer
 
         $reserve->save();
         return $reserve;
