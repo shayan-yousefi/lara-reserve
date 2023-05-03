@@ -71,8 +71,8 @@ trait ReservableReserve
         return $this->max_allowed_reserves;
     }
 
-    public function reserveWithoutCustomer(array $metadata, DatetimeInterface|Carbon|DateTime $reserveDate, string $reserveTime = '00:00:00'): Reserve
+    public function reserveWithoutCustomer(array $metadata, DatetimeInterface|Carbon|DateTime $reserveDate, string $reserveTime = '00:00:00',null|DatetimeInterface|Carbon|DateTime $endReserveDate = null, ?string $endReserveTime = null): Reserve
     {
-        return $this->reserves()->create(['reserved_date' => $reserveDate, 'reserved_time' => $reserveTime, 'metadata' => $metadata]);
+        return $this->reserves()->create(['reserved_date' => $reserveDate, 'reserved_time' => $reserveTime, 'metadata' => $metadata,'until_reserved_date'=>$endReserveDate,'until_reserved_time'=>$endReserveTime]);
     }
 }
