@@ -16,7 +16,7 @@ class CustomerTest extends TestCase
     {
         $reservable = ReservableTestModel::make(['id' => 1]);
         $customer = CustomerTestModel::make(['id' => 1]);
-        $reserve = $customer->reserve($reservable, now(), '00:00:00', ['someDetails' => 'details']);
+        $reserve = $customer->reserve($reservable, now(), '00:00:00', metadata:['someDetails' => 'details']);
 
         $this->assertInstanceOf(Reserve::class, $reserve);
         $this->assertEquals($reserve->reserved_date->format('Y-m-d'), now()->format('Y-m-d'));
@@ -31,10 +31,10 @@ class CustomerTest extends TestCase
 
         $reservable->max_allowed_reserves = 5;
         for ($i = 0; $i < 5; $i++) {
-            $customer->reserve($reservable, Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', ['someDetails' => 'details']);
+            $customer->reserve($reservable, Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', metadata:['someDetails' => 'details']);
             // 5 reserves filled in this date and time with this loop
         }
-        $reserve = $customer->reserve($reservable, Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', ['someDetails' => 'details']);
+        $reserve = $customer->reserve($reservable, Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', metadata:['someDetails' => 'details']);
         //this is 6th reserve for this date and time, this shouldn't be reserve, and return false
 
         $this->assertFalse($reserve);
@@ -47,10 +47,10 @@ class CustomerTest extends TestCase
 
         $reservable->max_allowed_reserves = 5;
         for ($i = 0; $i < 5; $i++) {
-            $customer->reserve($reservable->withoutCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', ['someDetails' => 'details']);
+            $customer->reserve($reservable->withoutCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', metadata:['someDetails' => 'details']);
             // 5 reserves filled in this date and time with this loop
         }
-        $reserve = $customer->reserve($reservable->withoutCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', ['someDetails' => 'details']);
+        $reserve = $customer->reserve($reservable->withoutCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', metadata:['someDetails' => 'details']);
         //this is 6th reserve for this date and time, this should be reserve because use of withoutCheckAvailability
 
         $this->assertInstanceOf(Reserve::class, $reserve);
@@ -65,10 +65,10 @@ class CustomerTest extends TestCase
 
         $reservable->max_allowed_reserves = 5;
         for ($i = 0; $i < 5; $i++) {
-            $customer->reserve($reservable->withCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', ['someDetails' => 'details']);
+            $customer->reserve($reservable->withCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', metadata:['someDetails' => 'details']);
             // 5 reserves filled in this date and time with this loop
         }
-        $reserve = $customer->reserve($reservable->withCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', ['someDetails' => 'details']);
+        $reserve = $customer->reserve($reservable->withCheckAvailability(), Carbon::createFromFormat('Y-m-d', '2023-04-22'), '00:00:00', metadata:['someDetails' => 'details']);
         //this is 6th reserve for this date and time, this should be reserve because use of withoutCheckAvailability
 
         $this->assertFalse($reserve);
