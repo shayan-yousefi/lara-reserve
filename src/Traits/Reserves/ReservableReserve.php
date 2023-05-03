@@ -18,7 +18,7 @@ trait ReservableReserve
 
     public function reserveForCustomer(CustomerReserveInterface $customer, DatetimeInterface|Carbon|DateTime $reserveDate, string $reserveTime = '00:00:00',null|DatetimeInterface|Carbon|DateTime $endReserveDate = null, ?string $endReserveTime = null, ?array $metadata = null): Reserve | bool
     {
-        return $customer->reserve($this, $reserveDate, $reserveTime, $endReserveDate, $endReserveTime, $metadata); // reserve without check availability
+        return $customer->reserve($this, $reserveDate, $reserveTime, $endReserveDate, $endReserveTime, $metadata);
     }
 
     public function withoutCheckAvailability():static{
