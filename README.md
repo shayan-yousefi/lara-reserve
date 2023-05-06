@@ -183,10 +183,10 @@ if you don't want to check the availability for some reasons you can use `withou
 $airplaneSeat = AirplainSeat::first();
 $customer = User::first();
 
-$airplaneSeat->withoutCheckAvailability()->reserveForCustomer($customer,now()->addDay(),'00:00:00',['code' => 123]);
+$airplaneSeat->withoutCheckAvailability()->reserveForCustomer($customer,now()->addDay(),'00:00:00',metadata:['code' => 123]);
 
 //or call reserve method of customer like this:
-$customer->reserve($airplaneSeat->withoutCheckAvailability(),now()->addDay(),'00:00:00',['key' => 'value']);
+$customer->reserve($airplaneSeat->withoutCheckAvailability(),now()->addDay(),'00:00:00',metadata:['key' => 'value']);
 ```
 this code will bypass the check availability.
 
@@ -243,10 +243,10 @@ this will don't check availability by default. if you want check availability wh
 $airplaneSeat = AirplainSeat::first();
 $customer = User::first();
 
-$airplaneSeat->withCheckAvailability()->reserveForCustomer($customer,now()->addDay(),'00:00:00',['code' => 123]);
+$airplaneSeat->withCheckAvailability()->reserveForCustomer($customer,now()->addDay(),'00:00:00',metadata:['code' => 123]);
 
 //or call reserve method of customer like this:
-$customer->reserve($airplaneSeat->withCheckAvailability(),now()->addDay(),'00:00:00',['key' => 'value']);
+$customer->reserve($airplaneSeat->withCheckAvailability(),now()->addDay(),'00:00:00',metadata:['key' => 'value']);
 ```
 this will check availability and then reserve.
 
