@@ -5,6 +5,8 @@
 
 Lara Reserve Is a Laravel Package To Adds a Reservation feature to the laravel models.
 
+for persian document version click [here](faREADME.md)
+
 # Installation
 
 
@@ -85,17 +87,13 @@ you can reserve a reservable for a customer by reserve method of a customer mode
 $reservable = Book::first();
 $customer = User::first();
 
-$customer->reserve($reservable,now()->addDay(),'00:00:00',now()->addYear(),'00:00:00',['key' => 'value']);
+$customer->reserve($reservable,now()->addDay(),'00:00:00',['key' => 'value']);
 ```
 
-in the above example, `$reservable` will reserve for `$customer`.
-#### Parameters
-1. reservable you want to reserve for customer
-2. the desired date for the reservation
-3. the desired time for the reservation in H:i:s format
-4. the desired date for the end reservation - **optional**
-5. the desired time for the end reservation in H:i:s format - **optional**
-6. additional details for the reservation - **optional**
+in the above example, `$reservable` will reserve for `$customer`. In the reserve method, the first argument is the
+reservable you want to reserve for `$customer`, and the second argument is the date you want to reserve; the third
+argument is reserve time in H:i:s format, and the default value is `00:00:00`, and the last argument is metadata and its
+optional.
 
 ### Call `reserveForCustomer` Method From Reservable
 
@@ -103,34 +101,24 @@ in the above example, `$reservable` will reserve for `$customer`.
 $reservable = Book::first();
 $customer = User::first();
 
-$reservable->reserveForCustomer($customer,now()->addDay(),'00:00:00',now()->addYear(),'00:00:00',['code' => 123]);
+$reservable->reserveForCustomer($customer,now()->addDay(),'00:00:00',['code' => 123]);
 ```
 
 In the above example, like the previous example, `$reservable` will reserve for `$customer`. In the `reserveFroCustomer`
-
-#### Parameters
-1. the customer would you like to make a reservation for
-2. the desired date for the reservation
-3. the desired time for the reservation in H:i:s format
-4. the desired date for the end reservation - **optional**
-5. the desired time for the end reservation in H:i:s format - **optional**
-6. additional details for the reservation - **optional**
+method, the first argument is the customer you want to book that reservable for, and the second argument is the date you
+want to reserve; the third argument is reserve time in H:i:s format, and the default value is `'00:00:00'`, and the last
+argument is metadata and its optional.
 
 ### Call `reserveWithoutCustomer` Method From Reservable
 
 ```php
 $reservable = Book::first();
 
-$reservable->reserveWithoutCustomer(['name' => 'shayan'],now()->addDay(),'00:00:00',now()->addYear(),'00:00:00');
+$reservable->reserveWithoutCustomer(['name' => 'shayan'],now()->addDay(),'00:00:00');
 ```
 
-With this method, you can reserve a reservable without a customer.
-#### Parameters
-1. array of the reservation details
-2. the desired date for the reservation
-3. the desired time for the reservation in H:i:s format
-4. the desired date for the end reservation - **optional**
-5. the desired time for the end reservation in H:i:s format - **optional**
+With this method, you can reserve a reservable without a customer. The first argument is metadata, which is required in
+this method. The second and third argument is the date and time you want to reserve.
 
 ## Max allowed reserves
 
@@ -259,11 +247,11 @@ $customer = User::first();
 
 $airplaneSeat->activeReserves()->get(); 
 // this will return collection of active reserves which reserved this reservable
-//(the reservations that have a reserved date and time or end reservation date and time that are greater than or equal to the current date and time.)
+//(reserves which reserved_date and reserved_time is greater or equal to now date and time)
 
 $customer->activeReserves()->get();
 // this will return collection of active reserves which reserved by this customer
-//(the reservations that have a reserved date and time or end reservation date and time that are greater than or equal to the current date and time.)
+//(reserves which reserved_date and reserved_time is greater or equal to now date and time)
 ```
 the `activeReserves` method return a MorphMany relation you can call `get` method to get the collection of reserves; you can also call `paginate` method.
 
@@ -279,34 +267,6 @@ $customer->allReserves()->get();
 // this will return collection of all reserves which reserved by this customer
 ```
 the `allReserves` method return a MorphMany relation you can call `get` method to get the collection of reserves; you can also call `paginate` method.
-
-## startedReserves
-```php
-$airplaneSeat = AirplainSeat::first();
-$customer = User::first();
-
-$airplaneSeat->startedReserves()->get(); 
-// this will return collection of started reserves which reserved this reservable
-//(the reservations that have a reserved date and time that are greater than or equal to the current date and time and end reservation date and time less than current date and time.)
-$customer->startedReserves()->get();
-// this will return collection of started reserves which reserved by this customer
-//(the reservations that have a reserved date and time that are greater than or equal to the current date and time and end reservation date and time less than current date and time.)
-```
-the `startedReserves` method return a MorphMany relation you can call `get` method to get the collection of reserves; you can also call `paginate` method.
-
-## endedReserves
-```php
-$airplaneSeat = AirplainSeat::first();
-$customer = User::first();
-
-$airplaneSeat->endedReserves()->get(); 
-// this will return collection of ended reserves which reserved this reservable
-//(the reservations that have a end reservation date and time that are greater than current date and time)
-$customer->endedReserves()->get();
-// this will return collection of ended reserves which reserved by this customer
-//(the reservations that have a end reservation date and time that are greater than current date and time)
-```
-the `endedReserves` method return a MorphMany relation you can call `get` method to get the collection of reserves; you can also call `paginate` method.
 
 # License
 

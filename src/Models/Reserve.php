@@ -12,8 +12,8 @@ class Reserve extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['reserved_date', 'metadata', 'reserved_time','end_reserve_date','end_reserve_time'];
-    protected $casts = ['metadata' => 'array', 'reserved_date' => 'date','end_reserve_date' => 'date'];
+    protected $fillable = ['reserved_date', 'metadata', 'reserved_time'];
+    protected $casts = ['metadata' => 'array', 'reserved_date' => 'date',];
 
     public function reservable(): MorphTo
     {
