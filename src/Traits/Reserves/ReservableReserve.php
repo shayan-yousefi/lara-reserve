@@ -16,9 +16,9 @@ trait ReservableReserve
 
     protected bool $checkAvailability = true;
 
-    public function reserveForCustomer(CustomerReserveInterface $customer, DatetimeInterface|Carbon|DateTime $reserveDate, string $reserveTime = '00:00:00', ?array $metadata = null): Reserve | bool
+    public function reserveForCustomer(CustomerReserveInterface $customer, DatetimeInterface|Carbon|DateTime $reserveDate, string $reserveTime = '00:00:00',null|DatetimeInterface|Carbon|DateTime $endReserveDate = null, ?string $endReserveTime = null, ?array $metadata = null): Reserve | bool
     {
-        return $customer->reserve($this, $reserveDate, $reserveTime, $metadata); // reserve without check availability
+        return $customer->reserve($this, $reserveDate, $reserveTime, $endReserveDate, $endReserveTime, $metadata);
     }
 
     public function withoutCheckAvailability():static{
@@ -71,8 +71,8 @@ trait ReservableReserve
         return $this->max_allowed_reserves;
     }
 
-    public function reserveWithoutCustomer(array $metadata, DatetimeInterface|Carbon|DateTime $reserveDate, string $reserveTime = '00:00:00'): Reserve
+    public function reserveWithoutCustomer(array $metadata, DatetimeInterface|Carbon|DateTime $reserveDate, string $reserveTime = '00:00:00',null|DatetimeInterface|Carbon|DateTime $endReserveDate = null, ?string $endReserveTime = null): Reserve
     {
-        return $this->reserves()->create(['reserved_date' => $reserveDate, 'reserved_time' => $reserveTime, 'metadata' => $metadata]);
+        return $this->reserves()->create(['reserved_date' => $reserveDate, 'reserved_time' => $reserveTime, 'metadata' => $metadata,'end_reserve_date'=>$endReserveDate,'end_reserve_time'=>$endReserveTime]);
     }
 }

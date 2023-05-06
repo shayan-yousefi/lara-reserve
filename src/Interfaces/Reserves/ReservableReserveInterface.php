@@ -10,7 +10,7 @@ use ShayanYS\LaraReserve\Models\Reserve;
 
 interface ReservableReserveInterface
 {
-    public function reserveForCustomer(CustomerInterface $customer, DatetimeInterface|Carbon|DateTime $reserveDate, string $reserveTime = '00:00:00', ?array $metadata = null): Reserve|bool;
+    public function reserveForCustomer(CustomerInterface $customer, DatetimeInterface|Carbon|DateTime $reserveDate, string $reserveTime = '00:00:00',null|DatetimeInterface|Carbon|DateTime $endReserveDate = null, ?string $endReserveTime = null, ?array $metadata = null): Reserve|bool;
 
     public function isAvailable(DateTimeInterface|DateTime|Carbon $date, DateTimeInterface|DateTime|Carbon|string $time = '00:00:00'): bool;
 
@@ -18,7 +18,7 @@ interface ReservableReserveInterface
 
     public function getMaxAllowedReserves(): int|null;
 
-    public function reserveWithoutCustomer(array $metadata, DatetimeInterface|Carbon|DateTime $reserveDate, string $reserveTime = '00:00:00'): Reserve;
+    public function reserveWithoutCustomer(array $metadata, DatetimeInterface|Carbon|DateTime $reserveDate, string $reserveTime = '00:00:00',null|DatetimeInterface|Carbon|DateTime $endReserveDate = null, ?string $endReserveTime = null): Reserve;
 
     public function withoutCheckAvailability(): static;
 
