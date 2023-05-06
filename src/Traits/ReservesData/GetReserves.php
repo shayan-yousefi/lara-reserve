@@ -30,12 +30,16 @@ trait GetReserves
     public function startedReserves(): MorphMany
     {
         return $this->reserves()->where(function ($query) {
-            $query->whereDate('reserved_date', '<', now())->orWhere(function ($query) {
-                $query->whereDate('reserved_date', '=', now())->whereTime('reserved_time', '<=', now());
+            $query->where(function ($query) {
+                $query->whereDate('reserved_date', '<', now())->orWhere(function ($query) {
+                    $query->whereDate('reserved_date', '=', now())->whereTime('reserved_time', '<=', now());
+            });
             })->where(function ($query) {
-                $query->whereDate('end_reserve_date', '>', now())->orWhere(function ($query) {
-                    $query->whereDate('end_reserve_date', '=', now())->whereTime('end_reserve_time', '>=', now());
-                });
+                $query->where(function ($query) {
+                    $query->whereDate('end_reserve_date', '>', now())->orWhere(function ($query) {
+                        $query->whereDate('end_reserve_date', '=', now())->whereTime('end_reserve_time', '>=', now());
+                    });
+                    });
             });
         })->with(['customer', 'reservable']);
     }
