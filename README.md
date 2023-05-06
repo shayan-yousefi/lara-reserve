@@ -5,8 +5,6 @@
 
 Lara Reserve Is a Laravel Package To Adds a Reservation feature to the laravel models.
 
-for persian document version click [here](faREADME.md)
-
 # Installation
 
 
