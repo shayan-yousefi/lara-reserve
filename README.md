@@ -311,13 +311,3 @@ the `endedReserves` method return a MorphMany relation you can call `get` method
 # License
 
 Freely distributable under the terms of the MIT license.
-
-# Buy Me a Cofee
-
-A lot of time has been spent to make this package and we always try to keep it updated. If you like, you can show your support in this way and this is valuable for me.
-
-<a href="http://www.coffeete.ir/shayanys">
-       <img src="http://www.coffeete.ir/images/buttons/lemonchiffon.png" style="width:260px;" />
-</a>
-<br>
-<a href="https://www.buymeacoffee.com/shayanys" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
